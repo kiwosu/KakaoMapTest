@@ -85,34 +85,39 @@
 
 
 //////////////////////////////////////////
-    const clickHandler = function (mouseEvent) {
+    const startHandler = function (mouseEvent) {
         const latlng = mouseEvent.latLng;
         startMarker.setPosition(latlng);
     };
 
-    function change_btn(event) {
-        const btns = document.querySelectorAll(".button");
-        btns.forEach(function (btn, i) {
+    const endHandler = function (mouseEvent) {
+        const latlng = mouseEvent.latLng;
+        arriveMarker.setPosition(latlng);
+    };
 
-            if (event.currentTarget == btn) {
-                btn.classList.add("active");
-                // "출발점" 버튼이 활성 상태일 때 실행할 코드 추가
-                kakao.maps.event.addListener(map, 'click', function (mouseEvent){
-                    const latlng = mouseEvent.latLng;
-                    startMarker.setPosition(latlng);
-                });
-            } else {
-                btn.classList.remove("active");
-                console.log("출발점 버튼이 비활성화.");
-                kakao.maps.event.removeListener(map, 'click', function (mouseEvent){
-                    const latlng = mouseEvent.latLng;
-                    startMarker.setPosition(latlng);
-                });
-            }
-        });
-        console.log( document.querySelectorAll(".button"));
-        console.log(event.currentTarget);
-    }
+
+
+
+
+        // startbtn 및 endbtn 요소가 존재할 때만 작업을 수행합니다.
+        function clickStart() {
+            var startBtn = document.getElementById("start");
+            var endBtn = document.getElementById("end");
+            startBtn.classList.add("active");
+            endBtn.classList.remove("active");
+            kakao.maps.event.addListener(map, 'click', startHandler);
+            kakao.maps.event.removeListener(map, 'click', endHandler);
+        }
+
+        function clickend() {
+            var startBtn = document.getElementById("start");
+            var endBtn = document.getElementById("end");
+            endBtn.classList.add("active");
+            startBtn.classList.remove("active");
+            kakao.maps.event.removeListener(map, 'click', startHandler);
+            kakao.maps.event.addListener(map, 'click', endHandler);
+        }
+
 </script>
 <style>
     .button:hover,
@@ -129,8 +134,8 @@
     }
 </style>
 <div class="e" style="font-size:20px">
-    <button class="button" id="start" onclick="change_btn(event)">출발점</button>
-    <button class="button" id="end" onclick="change_btn(event)">도착점</button>
+    <button class="button" id="start" onclick="clickStart();">출발점</button>
+    <button class="button" id="end" onclick="clickend();">도착점</button>
 </div>
 <input type="hidden" id="Latitude">
 <input type="hidden" id="Longitude">
