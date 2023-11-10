@@ -7,6 +7,8 @@
     <title>선의 거리 계산하기</title>
     <style>
         .dot {overflow:hidden;float:left;width:12px;height:12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png');}
+        .startdot {overflow:hidden;float:left;width:50px;height:50px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png');}
+        .enddot {overflow:hidden;float:left;width:50px;height:50px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png');}
         .dotOverlay {position:relative;bottom:10px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;font-size:12px;padding:5px;background:#fff;}
         .dotOverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
         .number {font-weight:bold;color:#ee6152;}
@@ -214,24 +216,28 @@
     // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 표출하는 함수입니다
     function displayCircleDot(position, distance) {
 
-        // 클릭 지점을 표시할 빨간 동그라미 커스텀오버레이를 생성합니다
-        var circleOverlay = new kakao.maps.CustomOverlay({
-            content: '<span class="dot"></span>',
-            position: position,
-            zIndex: 1
-        });
-        var circleStart = new kakao.maps.CustomOverlay({
-            content: '<span class="startdot"></span>',
-            position: position,
-            zIndex: 1
-        });
-
-        // 지도에 표시합니다
         if(dots.length == 0){
-            circleStart.setMap(map);
+            var circleOverlay = new kakao.maps.CustomOverlay({
+                content: '<span class="startdot"></span>',
+                position: position,
+                zIndex: 1
+            });
+        } else if (dots.length == dots.length-1){
+            var circleOverlay = new kakao.maps.CustomOverlay({
+                content: '<span class="enddot"></span>',
+                position: position,
+                zIndex: 1
+            });
         }else{
-            circleOverlay.setMap(map);
+            var circleOverlay = new kakao.maps.CustomOverlay({
+                content: '<span class="dot"></span>',
+                position: position,
+                zIndex: 1
+            });
         }
+
+        circleOverlay.setMap(map);
+
 
         if (distance > 0) {
             // 클릭한 지점까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다

@@ -29,5 +29,6 @@
 <a href="#" onclick="location.href='/DBdata1'">카카오 맵 DB연동 테스트1</a><br>
 <a href="#" onclick="location.href='/DBdata2'">카카오 맵 DB연동 테스트2</a><br>
 <a href="#" onclick="location.href='/DBdata3'">카카오 맵 DB연동 테스트3</a><br>
+<a href="#" onclick="location.href='/DBdata4'">카카오 맵 DB연동 테스트4</a><br>
 </body>
 </html>
