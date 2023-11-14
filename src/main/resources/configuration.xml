@@ -4,5 +4,6 @@
     <typeAliases>
         <!-- map -->
         <typeAlias alias="kmap"      type="com.example.kakaomap.dto.mapDTO"/>
+        <typeAlias alias="klist"      type="com.example.kakaomap.dto.listDTO"/>
     </typeAliases>
 </configuration>

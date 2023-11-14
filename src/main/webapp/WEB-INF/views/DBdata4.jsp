@@ -7,8 +7,8 @@
     <title>선의 거리 계산하기</title>
     <style>
         .dot {overflow:hidden;float:left;width:12px;height:12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png');}
-        .startdot {overflow:hidden;float:left;width:50px;height:50px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png');}
-        .enddot {overflow:hidden;float:left;width:50px;height:50px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png');}
+        .startdot {overflow:hidden;float:left;width:50px;height:45px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png');}
+        .enddot {overflow:hidden;float:left;width:50px;height:45px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png');}
         .dotOverlay {position:relative;bottom:10px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;font-size:12px;padding:5px;background:#fff;}
         .dotOverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
         .number {font-weight:bold;color:#ee6152;}
@@ -141,6 +141,8 @@
             // 마우스 클릭으로 그린 선의 좌표 배열을 얻어옵니다
             var path = clickLine.getPath();
 
+
+
             // 선을 구성하는 좌표의 개수가 2개 이상이면
             if (path.length > 1) {
 
@@ -196,8 +198,8 @@
                 map: map, // 커스텀오버레이를 표시할 지도입니다
                 content: content,  // 커스텀오버레이에 표시할 내용입니다
                 position: position, // 커스텀오버레이를 표시할 위치입니다.
-                xAnchor: 0,
-                yAnchor: 0,
+                xAnchor: 0.186,
+                yAnchor: 0.4,
                 zIndex: 3
             });
         }
@@ -216,19 +218,20 @@
     // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 표출하는 함수입니다
     function displayCircleDot(position, distance) {
 
+
+        //수정된 코드 해당 코드를 통해 찍히는 이미지가 변경됨
+        //시작 dot
         if(dots.length == 0){
             var circleOverlay = new kakao.maps.CustomOverlay({
                 content: '<span class="startdot"></span>',
                 position: position,
+                xAnchor: 0.3,
+                yAnchor: 1,
                 zIndex: 1
             });
-        } else if (dots.length == dots.length-1){
-            var circleOverlay = new kakao.maps.CustomOverlay({
-                content: '<span class="enddot"></span>',
-                position: position,
-                zIndex: 1
-            });
+            //끝 dot
         }else{
+            //기본 dot
             var circleOverlay = new kakao.maps.CustomOverlay({
                 content: '<span class="dot"></span>',
                 position: position,
@@ -299,7 +302,7 @@
         bycicleMin = '<span class="number">' + bycicleTime % 60 + '</span>분'
 
         // 거리와 도보 시간, 자전거 시간을 가지고 HTML Content를 만들어 리턴합니다
-        var content = '<ul class="dotOverlay distanceInfo">';
+        var content = '<span class="enddot"></span><ul class="dotOverlay distanceInfo">';
         content += '    <li>';
         content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
         content += '    </li>';

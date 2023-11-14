@@ -6,4 +6,5 @@ public interface mapDAO {
     int saveMap(mapDTO map);
 
     mapDTO dbLoad(int mapNum);
+
 }

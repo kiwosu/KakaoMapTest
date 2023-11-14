@@ -25,10 +25,19 @@
 <a href="#" onclick="location.href='/libKey'">키워드로 장소검색</a><br>
 <a href="#" onclick="location.href='/libKeyWord'">장소검색</a><br>
 
+<%--좌표 표식--%>
 <a href="#" onclick="location.href='/DBdata'">카카오 맵 DB연동 테스트</a><br>
+<%--좌표 저장하기--%>
 <a href="#" onclick="location.href='/DBdata1'">카카오 맵 DB연동 테스트1</a><br>
+<%--좌표 불러오기--%>
 <a href="#" onclick="location.href='/DBdata2'">카카오 맵 DB연동 테스트2</a><br>
+<%--출발 도착 + 클릭 이벤트--%>
 <a href="#" onclick="location.href='/DBdata3'">카카오 맵 DB연동 테스트3</a><br>
+<%--거리 구하기 + 출발 도착--%>
 <a href="#" onclick="location.href='/DBdata4'">카카오 맵 DB연동 테스트4</a><br>
+<%--거리 구하기 + 출발 도착 + 데이터 저장--%>
+<a href="#" onclick="location.href='/DBdata5'">카카오 맵 DB연동 테스트5</a><br>
+<%--거리 구하기 + 출발 도착 + 데이터 불러오기--%>
+<a href="#" onclick="location.href='/DBdata6'">카카오 맵 DB연동 테스트6</a><br>
 </body>
 </html>

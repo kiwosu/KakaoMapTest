@@ -137,4 +137,14 @@ public class indexController {
     public String DBdata4() {
         return "DBdata4";
     }
+
+    @GetMapping("/DBdata5")
+    public String DBdata5() {
+        return "DBdata5";
+    }
+
+    @GetMapping("/DBdata6")
+    public String DBdata6() {
+        return "DBdata6";
+    }
 }
